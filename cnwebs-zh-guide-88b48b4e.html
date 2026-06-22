@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 简明指南与访问提醒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background: linear-gradient(145deg, #fce4b8 0%, #f8d49a 45%, #f3c07a 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+      line-height: 1.6;
+      color: #2d2a1f;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* 主视觉卡片 – 暖色渐变背景 + 柔和阴影 */
+    .hero-card {
+      background: #fffffffa;
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      padding: 3rem 2rem 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 18px 36px -12px rgba(120, 70, 20, 0.3), 0 4px 12px rgba(0,0,0,0.04);
+      transition: transform 0.2s;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, #b55c1e, #8b4513);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #594e38;
+      max-width: 640px;
+      border-left: 4px solid #e3944a;
+      padding-left: 1.2rem;
+      margin-top: 0.25rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      background: #f2e5d4;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      color: #6b4f2b;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 1.5rem 1.8rem;
+      box-shadow: 0 12px 28px -14px rgba(100, 60, 20, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 30px -12px rgba(120, 70, 20, 0.35);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #7a4c23;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.01em;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: #3d382c;
+    }
+
+    .card-text + .card-text {
+      margin-top: 0.5rem;
+    }
+
+    /* 自然链接段落 + 提醒卡片 */
+    .link-section {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.2rem 2rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 10px 24px -10px rgba(90, 55, 20, 0.2);
+    }
+
+    .link-section p {
+      font-size: 1.02rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .link-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-link {
+      color: #b45f2a;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.08rem 0.2rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .highlight-link:hover {
+      background: #f3e1cc;
+      text-decoration: underline wavy #c67f48 1.5px;
+      text-underline-offset: 3px;
+    }
+
+    /* 按钮感链接 – 圆角按钮风格 */
+    .btn-link-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .btn-link {
+      display: inline-block;
+      background: #e7d3bb;
+      color: #4d3a24;
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(120, 70, 20, 0.08);
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .btn-link:hover {
+      background: #dbbd9b;
+      border-color: #b45f2a;
+      box-shadow: 0 6px 14px rgba(150, 80, 20, 0.15);
+      transform: scale(1.01);
+    }
+
+    /* 适合人群 + FAQ 风格卡片 */
+    .audience-faq {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 2rem 2rem;
+      box-shadow: 0 10px 24px -10px rgba(80, 50, 15, 0.18);
+      margin-bottom: 2rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: #dbbd99;
+      color: #3d2b19;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .two-col-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem 2rem;
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    .list-item {
+      padding: 0.2rem 0 0.2rem 0.6rem;
+      border-left: 3px solid #e6b07e;
+      font-size: 0.95rem;
+      color: #3f3a2b;
+    }
+
+    .faq-preview {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed #d6c1a8;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin: 0.8rem 0 0.1rem;
+      color: #6a4b2a;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: #4f4738;
+      margin-left: 1rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dccbb6;
+      margin: 0.8rem 0;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero-title { font-size: 2rem; }
+      .hero-card { padding: 2rem 1.2rem; }
+      .two-col-list { grid-template-columns: 1fr; }
+      .link-section, .audience-faq { padding: 1.5rem 1.2rem; }
+      .btn-link-wrapper { flex-direction: column; }
+    }
+
+    @media (max-width: 450px) {
+      body { padding: 1rem 0.8rem; }
+      .hero-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 主视觉 -->
+  <div class="hero-card">
+    <h1 class="hero-title">⚽ 世界杯 · 简明指南</h1>
+    <div class="hero-sub">从赛程脉络到观赛准备，带你快速建立对这项全球盛事的基本认知。</div>
+    <div class="hero-tagline">信息卡片式 · 实用提醒 · 自然衔接</div>
+  </div>
+
+  <!-- 用途卡片 × 3 -->
+  <div class="card-grid">
+    <div class="info-card">
+      <span class="card-icon">📋</span>
+      <div class="card-title">赛程与结构速览</div>
+      <div class="card-text">
+        了解赛事分为小组赛与淘汰赛两个主要阶段，每组四队循环对抗，积分前两名晋级。十六强之后单场决胜，直至决赛。提前掌握时间轴，避免错过关键对决。
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="card-icon">🔍</span>
+      <div class="card-title">观赛渠道提示</div>
+      <div class="card-text">
+        不同地区转播权归属差异大，建议先确认当地持权平台。部分场次提供免费直播，但多数高清源需订阅。留意时差，可借助回放功能灵活安排。
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="card-icon">⚡</span>
+      <div class="card-title">信息甄别提醒</div>
+      <div class="card-text">
+        赛前赛后网络信息密集，比分、阵容、突发新闻请以官方来源为准。警惕仿冒网站及虚假票务信息，认准权威标识，不要轻信非正规渠道。
+      </div>
+    </div>
+  </div>
+
+  <!-- 自然链接段落：嵌入 世界杯 链接 -->
+  <div class="link-section">
+    <p>
+      如果你希望系统性地了解本届赛事的完整规则、参赛队伍背景以及各阶段看点，可以参考由爱好者与资料整理者共同维护的专题页面——<a href="https://cnwebs-zh-shijiebei.com" class="highlight-link">世界杯</a>，那里汇集了从历史数据到当届预选赛的梳理内容，适合作为赛前预习的起点。
+    </p>
+    <p>
+      另外，针对常见误区（比如加时赛与点球大战的触发条件、红黄牌累积规则等），该页面也提供了清晰的说明。建议在观赛间隙随手翻阅，能帮助你更顺畅地理解场上局势。
+    </p>
+    <div class="btn-link-wrapper">
+      <a href="https://cnwebs-zh-shijiebei.com" class="btn-link">世界杯</a>
+      <a href="#" class="btn-link" style="background: #f3e4d2;">观赛备忘 · 下载</a>
+    </div>
+  </div>
+
+  <!-- 适合人群 + FAQ 摘要 -->
+  <div class="audience-faq">
+    <span class="section-label">👥 适合什么人关注</span>
+    <div class="two-col-list">
+      <div class="list-item">⚽ 新球迷：从基础规则和强队介绍入手，快速融入话题</div>
+      <div class="list-item">📊 数据型观众：关注历史战绩、射手榜、战术统计</div>
+      <div class="list-item">🌍 文化爱好者：了解主办国风土、球场建筑与球迷故事</div>
+      <div class="list-item">👨‍👩‍👧 家庭观众：安全观赛指南、亲子话题、趣味冷知识</div>
+    </div>
+
+    <div class="faq-preview">
+      <span class="section-label" style="background: #e6cfb5;">❓ 常见疑问摘要</span>
+      <div class="faq-q">📌 如何快速判断小组出线形势？</div>
+      <div class="faq-a">积分相同先比较净胜球，其次进球数；若仍持平则看相互战绩。建议关注第三轮同时开赛的两场比赛，出线条件常在那时明朗。</div>
+      <div class="faq-q">📌 为什么有时看不到官方直播？</div>
+      <div class="faq-a">地区版权限制是主因。部分平台需验证 IP 归属地，可查询当地通讯社或体育协会公布的转播名单。不建议使用来源不明的第三方插件。</div>
+      <hr>
+      <p style="font-size: 0.9rem; color: #6a5b48; margin-top: 0.2rem;">
+        💡 更多细节可访问 <a href="https://cnwebs-zh-shijiebei.com" class="highlight-link" style="font-weight: 500;">世界杯</a> 专题内的「常见问题」章节，内容持续更新。
+      </p>
+    </div>
+  </div>
+
+  <!-- 底部提醒卡片 -->
+  <div style="background: #fffbf5; border-radius: 28px; padding: 1.5rem 2rem; box-shadow: 0 6px 18px rgba(90,55,20,0.12);">
+    <p style="font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+      <span style="background: #dbbd99; border-radius: 20px; padding: 0.1rem 0.6rem; font-weight: 600;">🛡️</span>
+      访问提醒：请通过正规渠道获取赛事信息。任何要求提供个人账户、支付密码或点击不明链接的所谓“内部渠道”均属诈骗。保持理性，享受比赛本身。
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
